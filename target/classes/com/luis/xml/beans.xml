@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="mundo" class="com.luis.beans.Mundo">
+		<property name="saludo" value="Hola mundo!"></property>
+		
+	</bean>
+	<!-- <bean id ="persona" class="com.luis.beans.Persona">
+		<constructor-arg index="0" type ="int" value ="1"></constructor-arg>
+		<constructor-arg index="1" type ="String" value ="Luis"></constructor-arg>
+		<constructor-arg index="2" type ="String" value ="Lucho"></constructor-arg>
+	</bean> -->
+	
+	<bean id="persona" class ="com.luis.beans.Persona">
+		<property name="pais" ref="pais"></property>
+		<property name="id" value="1"></property>
+		<property name="nombre" value="Luis"></property>
+		<property name="apodo" value="lucho"></property>
+	</bean>
+	
+	<bean id ="pais" class ="com.luis.beans.Pais">
+		<property name="nombre" value="Colombia" ></property>
+		<property name="ciudad" >
+		<!-- beans anidados se alojan dentro del tag property, y se usa en lugar de la referencia (ref) -->
+			<bean id ="ciudad" class="com.luis.beans.Ciudad">
+				<property name="nombre" value="Armenia"></property>
+			</bean>
+		</property>
+	</bean>
+	
+	
+	<alias name="persona" alias="personaBean"/>
+	<alias name="pais" alias="paisBean"/>
+	<alias name="ciudad" alias="ciudadBean"/>
+	
+	
+	 
+</beans>
